@@ -1,0 +1,151 @@
+<html>
+<head>
+    <style>
+
+@import 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap';#videoBG{padding-bottom:56.25%;object-fit:cover;width:100%;height:100%;position:fixed;top:0;left:0;filter:blur(3px)}#background{width:100vw;height:100vh;overflow:hidden;position:absolute;z-index:-1}#middle{position:absolute;top:50%;width:100%;left:50%;transform:translate(-50%,-50%);align-items:center;justify-content:center;flex-direction:column}#title h2{font-size:30px;text-shadow:4px 5px 6px rgba(0,0,0,.6)}#title h1{font-size:250px;text-shadow:11px 15px 26px rgba(0,0,0,.6)}#title{display:flex;justify-content:center;align-items:center;flex-direction:column;margin-bottom:52px}#background-a{background-color:rgba(0,0,0,.6);position:fixed;top:0;left:0;width:100vw;height:100vh}#background-b{background-image:linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0));position:fixed;top:0;left:0;width:100vw;height:30vh}#background-c{background-image:linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0));position:fixed;bottom:0;left:0;width:100vw;height:40vh}*{padding:0;margin:0;font-family:comfortaa,cursive;color:#fff;cursor:default;font-weight:400}#nav-bar{padding:30px 48px;display:flex;justify-content:space-between}#middle #buttons a{text-decoration:none}#buttons{display:flex;justify-content:center;align-items:center;margin-bottom:52px}#buttons *{padding:12px 40px;border-radius:100vw;transition-duration:.3s}#buy-button{background-color:#008cff}#buy-button:hover{background-color:#ffa6a6}#panel-button{background-color:#4e88ff}#panel-button:hover{background-color:#a6c3ff}#navigation{align-items:center;display:flex}#navigation a{margin-left:57px;font-size:19px;text-decoration:none;transition-duration:.3s}#navigation a:hover{color:#508bff}#icon{display:flex;align-items:center}#icon div{margin-left:2px}#icon h1{font-weight:400;font-size:24px}#icon h2{font-weight:400;font-size:12px}.lds-ellipsis{display:inline-block;position:relative;width:80px;height:80px}.lds-ellipsis div{position:absolute;top:33px;width:13px;height:13px;border-radius:50%;background:#fff;animation-timing-function:cubic-bezier(0,1,1,0)}.lds-ellipsis div:nth-child(1){left:8px;animation:lds-ellipsis1 .6s infinite}.lds-ellipsis div:nth-child(2){left:8px;animation:lds-ellipsis2 .6s infinite}.lds-ellipsis div:nth-child(3){left:32px;animation:lds-ellipsis2 .6s infinite}.lds-ellipsis div:nth-child(4){left:56px;animation:lds-ellipsis3 .6s infinite}@keyframes lds-ellipsis1{0%{transform:scale(0)}100%{transform:scale(1)}}@keyframes lds-ellipsis3{0%{transform:scale(1)}100%{transform:scale(0)}}@keyframes lds-ellipsis2{0%{transform:translate(0,0)}100%{transform:translate(24px,0)}}#loading{width:100vw;height:100vh;position:absolute;top:0;left:0;transition-duration:1s;z-index:100;background-color:#000;display:flex;align-items:center;justify-content:center}#register-panel{z-index:1;backdrop-filter:blur(10px);width:100%;height:100%;position:absolute;top:0;left:0;display:flex;justify-content:center;align-items:center;transition-duration:.3s;opacity:0}#register-main{background-color:#1d1d1d;box-shadow:4px 4px 12px rgba(0,0,0,.5);padding:30px 96px}#register-content{justify-content:center;align-items:center;display:flex;flex-direction:column}#register-content h1{font-size:64px;margin-bottom:35px}#register-content input{margin-top:0}#login-panel{z-index:1;backdrop-filter:blur(10px);width:100%;height:100%;position:absolute;top:0;left:0;display:flex;justify-content:center;align-items:center;transition-duration:.3s;opacity:0}#login-main{background-color:#1d1d1d;box-shadow:4px 4px 12px rgba(0,0,0,.5);padding:30px 96px}#login-content{justify-content:center;align-items:center;display:flex;flex-direction:column}#login-content h1{font-size:64px;margin-bottom:35px}#login-content input{margin-top:5px}input{width:338px;color:#000;font-size:18px;border-radius:10px;height:45px;text-indent:15px}input:focus{outline:none}#login-panel p{margin-top:15px;color:#ff5d5d;font-size:15px}#register-panel p{margin-top:15px;color:#ff5d5d;font-size:15px}.account-button{background-color:#66a3ff;margin-top:10px;padding:10px 30px}
+ <link rel="stylesheet" type="text/css" href="rainbow.css"/>
+</style>
+<link rel="stylesheet" type="text/css" href="rainbow.css"/>
+<link rel="stylesheet" type="text/css" href="card.css"/>
+<link rel="stylesheet" type="text/css" href="oylama.css"/>
+<link rel="stylesheet" type="text/css" href="button.css"/>
+    <script src="https://shoppy.gg/api/embed.js"></script>
+    <script type="text/javascript">
+    
+ 
+  // Sayfa yüklendiğinde müziği otomatik olarak çal
+  window.addEventListener('load', function() {
+    var music = document.getElementById('music');
+    music.play();
+  });
+
+
+var playing=false;var animated=false;var loginChildClicked=false;var registerChildClicked=false;window.addEventListener("load",async ev=>{let userdata=await getUserData()
+let loading=document.getElementById("loading");let video=document.getElementById("videoBG");let loginButton=document.getElementById("login-button");let loginPanel=document.getElementById("login-panel");let registerPanel=document.getElementById("register-panel");loginPanel.style.display="none";registerPanel.style.display="none";if(userdata&&!userdata["error"]){document.getElementById("login-nav").style.display="none";document.getElementById("register-nav").style.display="none";}else{if(userdata&&userdata["error"]==="Please link your discord account first"){let response=await fetch("/api/discord-2oauth",{headers:{"Authorization":localStorage.getItem("session")}});let hakkında=document.getElementById("hakkında")
+window.location.href=await response.text();return;}
+document.getElementById("logout-nav").style.display="none";document.getElementById("panel-button").style.display="none";}
+loginPanel.addEventListener("click",()=>{if(!loginChildClicked){hideLoginPanel();}
+loginChildClicked=false;});for(let child of loginPanel.children){child.addEventListener("click",()=>{loginChildClicked=true;})}
+registerPanel.addEventListener("click",()=>{if(!registerChildClicked){hideRegisterPanel();}
+registerChildClicked=false;});for(let child of registerPanel.children){child.addEventListener("click",()=>{registerChildClicked=true;})}
+video.addEventListener("timeupdate",()=>{playing=true;})
+window.addEventListener("keypress",(e)=>{if(e.key==="Enter"){if(registerPanel.style.display!=="none"){register();}
+if(loginPanel.style.display!=="none"){login();}}})
+setInterval(()=>{if(playing&&!animated){animated=true;setTimeout(()=>{loading.style.opacity="0%";setTimeout(()=>{loading.style.display="none";},1000)},400);}})})
+function openLoginPanel(){let loginPanel=document.getElementById("login-panel");loginPanel.style.display="flex";loginPanel.style.opacity="0%";setTimeout(()=>{loginPanel.style.opacity="100%";},1);}
+function hideLoginPanel(){let loginPanel=document.getElementById("login-panel");setTimeout(()=>{loginPanel.style.display="none";},300);loginPanel.style.opacity="0";}
+function openRegisterPanel(){let registerPanel=document.getElementById("register-panel");registerPanel.style.display="flex";registerPanel.style.opacity="0%";setTimeout(()=>{registerPanel.style.opacity="100%";},1);}
+function hideRegisterPanel(){let registerPanel=document.getElementById("register-panel");setTimeout(()=>{registerPanel.style.display="none";},300);registerPanel.style.opacity="0";}
+function login(){let loginState=document.getElementById("login-state");let usernameInput=document.getElementById("login-username");let passwordInput=document.getElementById("login-password");loginState.style.color="#eafc77"
+loginState.innerText="Şuanda Neptune Girişler Aktif Değill"
+fetch("/api/login",{method:"POST",body:JSON.stringify({username:usernameInput.value,password:passwordInput.value})}).then(value=>{value.json().then(response=>{if(response["error-id"]){loginState.style.color="#ff5d5d";loginState.textContent=response["error"];}else{if(response["session"]){localStorage.setItem("session",response["session"]);window.location.assign("/panel");}}})})}
+function register(){let loginState=document.getElementById("register-state");let usernameInput=document.getElementById("register-username");let passwordInput=document.getElementById("register-password");let registrationInput=document.getElementById("register-code");loginState.style.color="#eafc77"
+loginState.innerText="Şuanda Neptune Girişler Aktif Değil"
+fetch("/api/register",{method:"POST",body:JSON.stringify({username:usernameInput.value,password:passwordInput.value,"registration-code":registrationInput.value})}).then(value=>{value.json().then(response=>{if(response["error"]){loginState.style.color="#ff5d5d";loginState.textContent=response["error"];}else{if(response["session"]){localStorage.setItem("session",response["session"]);window.location.assign("/panel");}}})})}
+async function getUserData(){if(!localStorage.getItem("session")){return null;}
+return new Promise(resolve=>{fetch("/api/userdata",{headers:{"Authorization":localStorage.getItem("session")}}).then(value=>{value.json().then(response=>{console.log(response)
+resolve(response)})})})}
+function logout(){localStorage.removeItem("session")
+document.getElementById("logout-nav").style.display="none";document.getElementById("panel-button").style.display="none";document.getElementById("login-nav").style.display="unset";document.getElementById("register-nav").style.display="unset";}
+
+</script>
+</head>
+<body>
+<div id="background">
+    <video id="videoBG" autoplay muted loop>
+        <source src="https://cdn.glitch.me/5b73b0dc-720b-4c58-aa5d-ccec5e1d1eee%2FCraftrise%20Hile%20Hack%20_%20Crafrise%20Hile%20A%C3%A7mak%20_%20(fly%2Cmakro%2Ckillaura%2Creach%2Cspeed%2Caimbot)__0%20Hile%20Efso.mp4?v=1637200317640" type="video/mp4">
+    </video>
+
+    <div id="background-a"></div>
+    <div id="background-b"></div>
+    <div id="background-c"></div>
+</div>
+<div id="loading">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>
+<div id="first-look">
+    <div id="nav-bar">
+        <div id="icon">
+            <img src="https://cdn.discordapp.com/icons/1037804857081475162/a_bdd9e0bcb0821b2632b73ac1838c113c.webp?size=96" style="height: 48px; width: 48px">
+            <div>
+                <h1 class="rainbow rainbow_text_animated text-white bg-box mb-3 scrolly">Neptune Client</h1>
+                <h2 class="rainbow rainbow_text_animated text-white bg-box mb-3 scrolly">Gelişmiş Özellikler.</h2>
+            </div>
+        </div>
+        <div id="navigation">
+            <a href="https://www.youtube.com/@WortexNotLegal">YouTube</a>
+            <a href=" https://discord.gg/N5qxwd2VcH ">Discord</a>
+            <a onclick="openRegisterPanel()" id="register-nav">Register</a>
+            <a onclick="openLoginPanel()" id="login-nav">Login</a>
+            <a id="logout-nav" onclick="logout()">Logout</a>
+        </div>
+    </div>
+
+    <div id="middle">
+        <div id="title">
+            <h1 class="rainbow rainbow_text_animated text-white bg-box mb-3 scrolly">Neptune</h1>
+  <a><span  onclick="';" class="rainbow rainbow_text_animated text-white bg-box mb-3 scrolly">Neptune Client</span></a>
+ <a><span  onclick="';" class="rainbow rainbow_text_animated text-white bg-box mb-3 scrolly">The Best Experince</span></a>
+            <h2 class="rainbow rainbow_text_animated text-white bg-box mb-3 scrolly"> Craftrise Serverinde Gelişmiş  Özellikler : Reach , Esp , Aimbot , KillAura ... +50 <h2>
+        </div>
+        <div id="buttons">
+            <a id="buy-button" class="shadow__btn middle-button" data-shoppy-product="v1LPm8h">Satın Al</a>
+
+<a href="https://neptunechat.glitch.me" class="shadow__btn">chat</a>
+
+            <a id="panel-button" class="middle-button" href="panel" style="margin-left: 30px;">Panel</a>
+        </div>
+    </div>
+</div>
+
+<audio id="audio" loop="1">
+        <source src="https://cdn.glitch.global/5b73b0dc-720b-4c58-aa5d-ccec5e1d1eee/y2mate.com%20-%20Mother%20Mother%20Verbatim%20Slowed.mp3?v=1685266938290" type="audio/mp3" />
+        <script>
+          const audio = document.getElementById('audio');
+  </audio>
+
+<script window.addEventListener('load', function() {
+    var music = document.getElementById('music');
+    music.play();
+  // Sayfa yüklendiğinde müziği otomatik olarak çal
+  window.addEventListener('load', function() {
+    var music = document.getElementById('music');
+    music.play();
+  });
+</script>
+
+
+
+
+<div id="login-panel">
+    <div id="login-main">
+        <div id="login-content">
+            <h1>Login</h1>
+            <input type="text" id="login-username" placeholder="Username"><br>
+            <input type="password" id="login-password" placeholder="Password">
+            <p id="login-state"><br></p>
+            <a class="account-button" id="login-button" onclick="login()">Login</a>
+        </div>
+    </div>
+</div>
+<div id="register-panel">
+    <div id="register-main">
+        <div id="register-content">
+            <h1>Register</h1>
+            <input type="text" id="register-username" placeholder="Username"><br>
+            <input type="password" id="register-password" placeholder="Password"><br>
+            <input type="password" id="register-code" placeholder="Registration Code">
+            <p id="register-state"><br></p>
+            <a class="account-button" id="register-button" onclick="register()">Register</a>
+        </div>
+    </div>
+</div>
+
+
+<body>
+<html>
+<audio autoplay>
+  <source src="https://cdn.glitch.global/5b73b0dc-720b-4c58-aa5d-ccec5e1d1eee/y2mate.com%20-%20Mother%20Mother%20Verbatim%20Slowed.mp3?v=1685266938290" type="audio/mpeg">
+ 
+</audio>
+  </body>
